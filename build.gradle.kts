@@ -21,8 +21,9 @@ kotlin {
 }
 
 // Co-locate Java sources with Kotlin
-sourceSets.main {
-	java.srcDirs("src/main/kotlin", "src/main/kotlin")
+sourceSets {
+	main { java.srcDirs("src/main/kotlin") }
+	test { java.srcDirs("src/test/kotlin") }
 }
 
 repositories {
