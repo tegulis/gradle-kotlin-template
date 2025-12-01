@@ -5,19 +5,19 @@ import kotlin.io.path.Path
 
 plugins {
 	application
-	kotlin("jvm") version "2.0.21"
-	id("com.gradleup.shadow") version "9.0.0-beta2"
+	kotlin("jvm") version "2.2.21"
+	id("com.gradleup.shadow") version "9.2.2"
 }
 
 group = "net.tegulis.template"
-version = "1.2.0"
+version = "2.0.0"
 
 application {
 	mainClass = "${project.group}.MainKt"
 }
 
 kotlin {
-	jvmToolchain(21)
+	jvmToolchain(25)
 }
 
 // Co-locate Java sources with Kotlin
@@ -33,10 +33,10 @@ repositories {
 
 dependencies {
 	// TEST
-	testImplementation(group = "org.junit.jupiter", name = "junit-jupiter", version = "5.10.3")
+	testImplementation(group = "org.junit.jupiter", name = "junit-jupiter", version = "6.0.1")
 	testRuntimeOnly(group = "org.junit.platform", name = "junit-platform-launcher")
 	// Google Truth
-	testImplementation(group = "com.google.truth", name = "truth", version = "1.4.2")
+	testImplementation(group = "com.google.truth", name = "truth", version = "1.4.5")
 }
 
 tasks.withType<KotlinCompile> {
