@@ -67,7 +67,7 @@ tasks.withType<Test> {
 	enableAssertions = true
 	// Extra settings for very verbose testing
 	testLogging {
-		events = TestLogEvent.values().filter { it != TestLogEvent.STARTED }.toSet()
+		events = TestLogEvent.entries.filter { it != TestLogEvent.STARTED }.toSet()
 		exceptionFormat = TestExceptionFormat.FULL
 		showExceptions = true
 		showCauses = true
