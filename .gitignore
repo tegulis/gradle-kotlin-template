@@ -1,6 +1,8 @@
 # Gradle and build directories
-/.gradle/
-/build/
+.gradle/
+build/
 # IntelliJ IDEA
-/.idea/
-/*.iml
+.idea/
+*.iml
+# Various output directories
+.kotlin/
