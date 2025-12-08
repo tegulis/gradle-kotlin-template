@@ -1,4 +1,3 @@
-//import net.tegulis.gradle.ReplaceVersion
 import com.ncorti.ktfmt.gradle.TrailingCommaManagementStrategy
 import net.tegulis.gradle.ReplaceVersion
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
