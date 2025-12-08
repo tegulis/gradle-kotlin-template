@@ -12,9 +12,9 @@ plugins {
 }
 
 group = "net.tegulis.template"
-version = "2.0.0"
+version = "2.1.0"
 
-kotlin.jvmToolchain(24)
+kotlin.jvmToolchain(21)
 
 // Co-locate Java sources with Kotlin
 sourceSets {
