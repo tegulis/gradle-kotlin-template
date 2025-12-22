@@ -1,8 +1,7 @@
 package net.tegulis.template.app
 
 import net.tegulis.template.Library
-
-const val VERSION = "2.0.0"
+import net.tegulis.template.VERSION
 
 fun main() {
     println("Main version: $VERSION")
