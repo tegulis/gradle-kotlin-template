@@ -1,6 +1,7 @@
 import com.ncorti.ktfmt.gradle.TrailingCommaManagementStrategy
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     alias(libs.plugins.kotlin.jvm)
@@ -86,3 +87,6 @@ listOf("", "Main", "Scripts", "Test").forEach { taskName ->
         enabled = gradle.startParameter.taskNames.contains(this.name)
     }
 }
+
+// Format code before compiling
+tasks.withType<KotlinCompile> { dependsOn("ktfmtFormat") }
