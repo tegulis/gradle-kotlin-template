@@ -65,7 +65,7 @@ tasks.withType<KotlinCompile> { dependsOn("ktfmtFormat") }
 val generatedSourcesDir = "${layout.buildDirectory.get()}/generated/kotlin"
 
 tasks.register<Copy>("generateKotlin") {
-    val templateContext = mapOf("package" to project.group, "version" to project.version)
+    val templateContext = mapOf("version" to project.version)
     inputs.properties(templateContext)
     from("src/template/kotlin")
     into(generatedSourcesDir)

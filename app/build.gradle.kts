@@ -83,9 +83,7 @@ ktfmt {
 
 // Don't check formatting unless explicitly asked for
 listOf("", "Main", "Scripts", "Test").forEach { taskName ->
-    tasks.named("ktfmtCheck$taskName") {
-        enabled = gradle.startParameter.taskNames.contains(this.name)
-    }
+    tasks.named("ktfmtCheck$taskName") { enabled = gradle.startParameter.taskNames.contains(this.name) }
 }
 
 // Format code before compiling
