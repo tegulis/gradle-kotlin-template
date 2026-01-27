@@ -1,6 +1,7 @@
 import com.ncorti.ktfmt.gradle.TrailingCommaManagementStrategy
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     alias(libs.plugins.kotlin.jvm)
@@ -55,12 +56,14 @@ ktfmt {
 
 // Don't check formatting unless explicitly asked for
 listOf("", "Main", "Scripts", "Test").forEach { taskName ->
-    tasks.named("ktfmtCheck$taskName") {
-        enabled = gradle.startParameter.taskNames.contains(this.name)
-    }
+    tasks.named("ktfmtCheck$taskName") { enabled = gradle.startParameter.taskNames.contains(this.name) }
 }
 
+// Format code before compiling
+tasks.withType<KotlinCompile> { dependsOn("ktfmtFormat") }
+
 val generatedSourcesDir = "${layout.buildDirectory.get()}/generated/kotlin"
+
 tasks.register<Copy>("generateKotlin") {
     val templateContext = mapOf("package" to project.group, "version" to project.version)
     inputs.properties(templateContext)
@@ -68,8 +71,7 @@ tasks.register<Copy>("generateKotlin") {
     into(generatedSourcesDir)
     expand(templateContext)
 }
+
 tasks.named("compileKotlin").configure { dependsOn("generateKotlin") }
 
-sourceSets.main {
-    kotlin.srcDir(generatedSourcesDir)
-}
+sourceSets.main { kotlin.srcDir(generatedSourcesDir) }
