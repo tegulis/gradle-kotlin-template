@@ -37,12 +37,6 @@ tasks.register("packZip", Zip::class) {
 
 kotlin.jvmToolchain(25)
 
-// Co-locate Java sources with Kotlin
-sourceSets {
-    main { java.srcDirs("src/main/kotlin") }
-    test { java.srcDirs("src/test/kotlin") }
-}
-
 dependencies {
     implementation(project(":lib"))
     // TESTING

@@ -11,12 +11,6 @@ plugins {
 
 kotlin.jvmToolchain(25)
 
-// Co-locate Java sources with Kotlin
-sourceSets {
-    main { java.srcDirs("src/main/kotlin") }
-    test { java.srcDirs("src/test/kotlin") }
-}
-
 dependencies {
     // TESTING
     // JUnit Jupiter
@@ -65,6 +59,7 @@ tasks.withType<KotlinCompile> { dependsOn("ktfmtFormat") }
 val generatedSourcesDir = "${layout.buildDirectory.get()}/generated/kotlin"
 
 tasks.register<Copy>("generateKotlin") {
+    description = "Generates Kotlin sources from templates"
     val templateContext = mapOf("version" to project.version)
     inputs.properties(templateContext)
     from("src/template/kotlin")
