@@ -39,6 +39,11 @@ kotlin.jvmToolchain(25)
 
 dependencies {
     implementation(project(":lib"))
+    // LOGGING
+    implementation(libs.kotlin.logging)
+    implementation(libs.slf4j)
+    runtimeOnly(libs.logback.classic)
+    runtimeOnly(libs.logstash.logback.encoder)
     // TESTING
     // JUnit Jupiter
     testImplementation(libs.junit.jupiter)

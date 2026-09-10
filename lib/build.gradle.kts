@@ -12,6 +12,9 @@ plugins {
 kotlin.jvmToolchain(25)
 
 dependencies {
+    // LOGGING
+    implementation(libs.kotlin.logging)
+    implementation(libs.slf4j)
     // TESTING
     // JUnit Jupiter
     testImplementation(libs.junit.jupiter)

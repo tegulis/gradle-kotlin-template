@@ -1,6 +1,6 @@
 allprojects {
     group = "net.tegulis.template"
-    version = "3.3.0"
+    version = "4.0.0"
 }
 
 // Kotlin plugin asks to be added here to prevent breaking the build
