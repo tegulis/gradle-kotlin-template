@@ -4,11 +4,12 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    alias(libs.plugins.kotlin.jvm)
-    alias(libs.plugins.gradle.ktfmt)
-    alias(libs.plugins.gradle.versions)
     id("application")
+    alias(libs.plugins.gradle.ktfmt)
     alias(libs.plugins.gradle.shadow)
+    alias(libs.plugins.gradle.versions)
+    alias(libs.plugins.kotest)
+    alias(libs.plugins.kotlin.jvm)
 }
 
 application.mainClass = "${project.group}.${project.name}.MainKt"
@@ -45,17 +46,16 @@ dependencies {
     runtimeOnly(libs.logback.classic)
     runtimeOnly(libs.logstash.logback.encoder)
     // TESTING
-    // JUnit Jupiter
-    testImplementation(libs.junit.jupiter)
-    testRuntimeOnly(libs.junit.platform)
-    // Google Truth
-    testImplementation(libs.google.truth)
+    // Kotest
+    testImplementation(libs.kotest.runner)
 }
 
+kotest { enablePowerAssert = true }
+
 tasks.withType<Test> {
+    useJUnitPlatform()
     // Check formatting before testing for good measure, even though it will be skipped since it is disabled below
     dependsOn("ktfmtCheck")
-    useJUnitPlatform()
     enableAssertions = true
     // Extra settings for very verbose testing
     testLogging {

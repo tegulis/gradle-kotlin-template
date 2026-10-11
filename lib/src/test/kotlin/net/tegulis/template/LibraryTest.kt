@@ -1,14 +1,14 @@
 package net.tegulis.template
 
-import com.google.common.truth.Truth.assertThat
-import org.junit.jupiter.api.Test
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.string.shouldContain
 
-class LibraryTest {
-    @Test
-    fun messageIsGenerated() {
-        val inputName = "world"
-        val expectedOutput = "Hello world!"
-        val actualOutput = Library.generateMessage(inputName)
-        assertThat(actualOutput).contains(expectedOutput)
-    }
-}
+class LibraryTest :
+    FunSpec({
+        test("message is generated") {
+            val inputName = "world"
+            val expectedOutput = "Hello world!"
+            val actualOutput = Library.generateMessage(inputName)
+            actualOutput shouldContain expectedOutput
+        }
+    })
